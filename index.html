@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MetroFlow AI - Smart Urban Logistics</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="bg-emerald-500 text-slate-950 font-black px-3 py-1 rounded-lg">MF</div>
+      <div>
+        <h1 class="font-bold text-lg leading-tight">MetroFlow AI</h1>
+        <p class="text-xs text-slate-400">Urban Last-Mile Dispatch & Eco-Routing Engine</p>
+      </div>
+    </div>
+    <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full pulse-active">
+      ● Hackathon MVP
+    </span>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+
+    <!-- Left Column: Fleet Input & Route Planning -->
+    <section class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 flex flex-col gap-4">
+      <h2 class="font-semibold text-slate-200 border-b border-slate-700 pb-2">1. Logistics Input</h2>
+
+      <div>
+        <label class="block text-xs font-medium text-slate-400 mb-1">Vehicle Type</label>
+        <select id="vehicleType" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm text-slate-200">
+          <option value="electric-van">Electric Cargo Van (Zero Tailpipe)</option>
+          <option value="e-bike">Cargo E-Bike (Micro-Hub Routing)</option>
+          <option value="diesel-truck">Standard Diesel Courier Truck</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium text-slate-400 mb-1">Delivery Hub Dropoff Points</label>
+        <textarea id="stopsInput" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm text-slate-200" placeholder="Enter delivery locations...">Central Station, North Market, Tech Park, South Port</textarea>
+      </div>
+
+      <button id="optimizeBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg transition-all shadow-lg shadow-emerald-500/20">
+        Optimize Eco-Route & Schedule
+      </button>
+
+      <!-- Logistics Metrics Dashboard -->
+      <div class="mt-auto grid grid-cols-2 gap-2 pt-4 border-t border-slate-700/50">
+        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+          <div class="text-xs text-slate-400">Est. Carbon Saved</div>
+          <div id="co2Saved" class="text-xl font-bold text-emerald-400">14.2 kg</div>
+        </div>
+        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+          <div class="text-xs text-slate-400">Traffic Delay Reduced</div>
+          <div id="timeSaved" class="text-xl font-bold text-cyan-400">28 mins</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center/Right Column: Interactive Route Map -->
+    <section class="lg:col-span-2 bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 flex flex-col gap-4 min-h-[450px]">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+        <h2 class="font-semibold text-slate-200">2. Live Zone Heatmap & Optimal Path</h2>
+        <span class="text-xs text-slate-400">Simulated Urban Congestion Index: <span class="text-amber-400 font-bold">Moderate</span></span>
+      </div>
+      
+      <!-- Map Container -->
+      <div id="map" class="w-full flex-1 rounded-lg border border-slate-700 overflow-hidden"></div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
